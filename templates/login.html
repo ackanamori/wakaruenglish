@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="/login" method="POST">
+    <h1>ログイン</h1>
+    <p>名　　　前　<input type="text" name="member_name"></p>
+    <p>パスワード　<input type ="password" name ="member_password"></p>
+    <input type="submit" value="ログイン" name="save">
+    <button type="button" onclick="location.href=['/regist']"></button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <table border="1">
+        {%for item in html_tasklist %}
+        <tr>
+            <th>{{item["id"]}}</th>
+            <th>{{item["task"]}}</th>
+            <th><a href="/edit/{{item['id']}}">編集</a></th>
+            <th><a href="/delete/{{item['id']}}">削除</a></th>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/add">タスクの追加</a> 
+    <a href="/logout">ログアウト</a> 
+
+
+{% endblock %}

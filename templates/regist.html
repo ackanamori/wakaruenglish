@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="/regist" method="POST">
+    <h1>ID登録</h1>
+    <p>名　　　前　<input type="text" name="member_name"></p>
+    <p>パスワード　<input type ="password" name ="member_password"></p>
+    <input type="submit" value="登録" name="save">
+</form>
+
+{% endblock %}

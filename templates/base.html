@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="stylesheet.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recet.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
     <title>WAKARU ENGLISH</title>
 </head>
@@ -13,15 +14,14 @@
         <div><img src="static/img/logo.png" alt="WAKARU ENGLISH"></div>
         <ul>
             <li class="btnLogoutHeader"></li>
-            <li class="btnHomeHeader"><a href="/"></a></li>
+            <li class="btnHomeHeader"><a href="/"><img scr="static/img/topicon.png"></a></li>
         </ul>
     </header>
-
     {% block content %}
     {% endblock %}
 
     <footer>
-        type xxxxx@gmail.com
+        <p class="textCopylight">© 2021 team torch</p>
     </footer>
 </body>
 </html>

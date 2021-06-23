@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<link href="login_entry.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/entry.css') }}">
 <section class="loginEntryTitle">
     <h1>新規会員登録</h1>
     <p class="basicText">任意のお客様IDとパスワードをご入力ください。</p>

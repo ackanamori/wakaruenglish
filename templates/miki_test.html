@@ -13,9 +13,25 @@
             <source src="../static/audio/3_past.mp3">
         </audio> 
     <!-- 音声再生用 -->
-    <table>
-        <th>{{word_id}}</th> 
+
+    <!-- 一覧表示用 -->
+    <table border="1">
+        {%for item in html_wordlist %}
+        <tr>
+            <th>{{item["word_id"]}}</th>
+            <th>
+                <audio controls>
+                    <source src="../static/audio/{{item['voice_past']}}">
+                </audio>
+            </th>            
+            <th>{{item["past"]}}</th>
+
+
+        </tr>
+        {% endfor %}
     </table>
+    <!-- 一覧表示用 -->
+
     </main>
 </body>
 </html>

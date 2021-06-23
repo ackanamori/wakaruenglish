@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="login_entry.css" rel="stylesheet">
+<section class="loginEntryTitle">
+    <h1>新規会員登録</h1>
+    <p class="basicText">任意のお客様IDとパスワードをご入力ください。</p>
+</section>
+<section class="formstyle">
+<form action="/entry" method="POST">
+    <p class="formTitle">お客様ID<input type="text" name="name"></p>
+    <p class="formTitle">パスワード<input type ="password" name ="password"></p>
+    <input type="submit" value="登録する" name="save">
+</form>
+</section>
+{% endblock %}

@@ -30,8 +30,8 @@ def register():
     # ここからPOSTの処理
     else:
         # 登録ページで登録ボタンを押した時に走る処理
-        name = request.form.get("name")
-        password = request.form.get("password")
+        name = request.form.get("member_name")
+        password = request.form.get("member_password")
         user_id = request.form.get("user_id")
 
         conn = sqlite3.connect('wakaen.db')
@@ -52,8 +52,8 @@ def login():
             return render_template("login.html")
     else:
         # ブラウザから送られてきたデータを受け取る
-        name = request.form.get("name")
-        password = request.form.get("password")
+        name = request.form.get("member_name")
+        password = request.form.get("member_password")
 
         # ブラウザから送られてきた name ,password を userテーブルに一致するレコードが
         # 存在するかを判定する。レコードが存在するとuser_idに整数が代入、存在しなければ nullが入る
@@ -71,6 +71,12 @@ def login():
         else:
             session['user_id'] = user_id[0]
             return redirect("/mypage")        
+
+@app.route("/mypage")
+def mypage():
+   
+    return render_template('mypage.html' )
+    
 
 # ―――――――――――――――――――――ここまで―――――――――――――――――――――――――――
 

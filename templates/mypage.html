@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<link href="mypage.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mypage.css') }}">
 <h1 class="pageTitle">マイページ</h1>
 <section class="levelBox">
     <h2 class="leveltitle">レベル7</h2>

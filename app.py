@@ -23,21 +23,21 @@ def register():
     #  登録ページを表示させる
     if request.method == "GET":
         if 'user_id' in session :
-            return redirect ('/bbs')
+            return redirect ('/mypage')
         else:
             return render_template("entry.html")
 
     # ここからPOSTの処理
     else:
         # 登録ページで登録ボタンを押した時に走る処理
-        name = request.form.get("member_name")
-        password = request.form.get("member_password")
-        user_id = request.form.get("user_id")
+        name = request.form.get("name")
+        password = request.form.get("password")
+        
 
         conn = sqlite3.connect('wakaen.db')
         c = conn.cursor()
         # 課題4の答えはここ
-        c.execute("insert into persons values(null, ?,?)",(name, password))
+        c.execute("insert into persons values(null, ?, ?)",(name, password))
         conn.commit()
         conn.close()
         return redirect('/login')

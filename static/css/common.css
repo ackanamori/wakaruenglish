@@ -1,0 +1,48 @@
+body {
+	background-color: #fff;
+	font-family: "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "Hiragino Sans", Meiryo, sans-serif;
+	color: #5D4B39;
+}
+
+/* SP */
+@media screen and (max-width: 963px)  {
+	.pc_only { display: none !important; }
+	.sp_only { display: block !important; }
+
+	.wakaruHeader {
+		width: 100%;
+		border-top: 5px solid #6A6A6A;
+		border-bottom: 2px solid #E0E0E0;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.wakaruHeaderbtnlist {
+		display: flex;
+		align-items: center;
+		margin-right: 14px;
+	}
+
+	.wakaruHeaderLogo img {
+		width: 177px;
+		margin-left: 14px;
+	}
+
+	.btnHomeHeader img {
+		width: 24px;
+	}
+
+	.btnLogoutHeader a{
+		font-size: 12px;
+		color: white;
+		background-color: #6A6A6A;
+		padding: 10px;
+		border-radius: 3px;
+	}
+
+	.btnLogoutHeader {
+		margin-right: 16px;
+	}
+
+}

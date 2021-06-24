@@ -27,6 +27,7 @@ body {
 	.wakaruHeaderLogo img {
 		width: 177px;
 		margin-left: 14px;
+		margin-top: 6px;
 	}
 
 	.btnHomeHeader img {
@@ -44,5 +45,7 @@ body {
 	.btnLogoutHeader {
 		margin-right: 16px;
 	}
+
+
 
 }

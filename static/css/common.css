@@ -9,6 +9,19 @@ body {
 	.pc_only { display: none !important; }
 	.sp_only { display: block !important; }
 
+	.btn {
+		display: inline-block;
+		font-size: 15px;
+		background-color: #6A6A6A;
+		color: white;
+		letter-spacing: 0.08em;
+		padding: 12px 0;
+		width: 274px;
+		border-radius: 3px;
+		text-align: center;
+		font-weight: bold;
+	}
+
 	.wakaruHeader {
 		width: 100%;
 		border-top: 5px solid #6A6A6A;
@@ -32,20 +45,31 @@ body {
 
 	.btnHomeHeader img {
 		width: 24px;
+		position: relative;
+		top: 3px;
 	}
 
-	.btnLogoutHeader a{
+	.btnLogoutHeader{
 		font-size: 12px;
 		color: white;
 		background-color: #6A6A6A;
 		padding: 10px;
 		border-radius: 3px;
+		font-weight: bold;
 	}
 
 	.btnLogoutHeader {
 		margin-right: 16px;
 	}
 
-
+	.pageTitle {
+		background-color: #F0E8DF;
+		color: #333333;
+		padding: 12px 0 14px;
+		font-size: 17px;
+		text-align: center;
+		letter-spacing: 0.08em;
+		margin-bottom: 20px;
+	}
 
 }

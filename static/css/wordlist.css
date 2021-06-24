@@ -1,0 +1,32 @@
+.leveltitleBox {
+    padding: 20px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leveltitle { 
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.scoerBox {
+    display: flex;
+}
+
+.scoerBoxTitle {
+    font-style: 13px;
+    margin-right: 20px;
+    letter-spacing: 0.05em;
+}
+
+.scoerBoxCount,
+.scoerBoxSlash,
+.scoerQuestionsNumber {
+	font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.scoerBoxSlash {
+    margin: 0 5px;
+}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/wordlist.css') }}">
+<h1 class="pageTitle">単語一覧</h1>
+<main>
+    <!-- 一覧表示用 -->
+    <table class="questionsListContent">
+        {%for item in html_wordlist %}
+        <tr class="questionsOneline">
+            <th class="questionsWordId">{{item["word_id"]}}</th>
+            <th class="questionsAudio">
+                <audio controls>
+                    <source src="../static/audio/{{item['voice_past']}}">
+                </audio>
+            </th>           
+            <th class="questionsWord">{{item["past"]}}</th>
+            <th class="questionsStatus">{{item["past"]}}</th>
+            <th class="questionsCountbox">
+                <ul>
+                    <li class="questionsCountTitle">間違った数</li>
+                    <li class="questionsCount">{{item["past"]}}</li>
+                </ul>
+            </th>
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- 一覧表示用 -->
+    <div><a class="btn topBack" href="/">トップに戻る</a></div>
+</main>
+{% endblock %}

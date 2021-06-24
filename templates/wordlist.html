@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/wordlist.css') }}">
-<h1 class="pageTitle">単語一覧</h1>
+<h1 class="pageTitle pageTitle">単語一覧</h1>
 <main>
     <!-- 一覧表示用 -->
-    <table class="questionsListContent">
+    <!-- <table class="questionsListContent">
         {%for item in html_wordlist %}
-        <tr class="questionsOneline">
+        <tr class="questionsOnebox">
             <th class="questionsWordId">{{item["word_id"]}}</th>
             <th class="questionsAudio">
                 <audio controls>
@@ -23,8 +23,32 @@
             </th>
         </tr>
         {% endfor %}
-    </table>
+    </table> -->
     <!-- 一覧表示用 -->
+    <section class="questionsListContent">
+        {%for item in html_wordlist %}
+        <div class="questionsOnebox">
+            <ul>
+                <li class="questionsWordId">{{item["word_id"]}}</li>
+                <li class=questionsAudio>
+                    <audio controls>
+                        <source src="../static/audio/{{item['voice_past']}}">
+                    </audio>
+                </li>
+            </ul>
+            <ul>
+                <li class="questionsStatus">{{item["past"]}}</li>
+                <li>
+                    <ul class="questionsCountbox">
+                        <li class="questionsCountTitle">間違った数</li>
+                        <li class="questionsCount">{{item["past"]}}</li>
+                    </ul> 
+                </li>
+            </ul>
+        </div>
+        {% endfor %}
+    </section>
+
     <div><a class="btn topBack" href="/">トップに戻る</a></div>
 </main>
 {% endblock %}

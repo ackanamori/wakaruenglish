@@ -10,10 +10,11 @@ body {
 	background-color: #6A6A6A;
 	color: white;
 	letter-spacing: 0.08em;
-	padding: 12px 0;
 	width: 274px;
+	padding: 12px 0;
 	border-radius: 5px;
 	text-align: center;
+	border: none;
 }
 
 .wakaruHeader {
@@ -88,7 +89,52 @@ body {
 	margin-bottom: 20px;
 }
 
+.formstyle {
+	width: 90%;
+	margin: 0 auto 40px;
+	background-color: #F5F5F5;
+	text-align: center;
+}
+
+form {
+	display: inline-block;
+	text-align: left;
+	margin: 30px 0;
+}
+
+input {
+	width: 264px;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+}
+
+.formTitle {
+	margin-bottom: 4px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.formInput { 
+	margin-bottom: 10px;
+	border: 1px solid #BEBEBE;
+	border-radius: 5px;
+	width: 268px;
+}
+
+.inputBtn { 
+	background-color: #B49674;
+	padding: 0;
+	margin-top: 10px;
+}
+
 .basicText {
 	font-size: 12px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.leveltitle { 
+    font-size: 17px;
+    font-weight: bold;
+    margin-left: 16px;
 }

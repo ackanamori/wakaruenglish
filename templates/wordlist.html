@@ -14,28 +14,31 @@
             </dl>
         </div>  
         {%for item in html_wordlist %}
-        <div class="questionsOnebox">
-            <ul>
-                <li class="questionsWordId">{{item["word_id"]}}</li>
-                <li class=questionsAudio>
+        <div class="questionsOneContent">
+            <ul class="questionsOnebox">
+                <li class="questionsAudio">
+                    <p class="questionsWordId">{{item["word_id"]}}</p>
                     <audio controls>
                         <source src="../static/audio/{{item['voice_past']}}">
                     </audio>
                 </li>
             </ul>
-            <ul>
-                <li class="questionsStatus">{{item["past"]}}</li>
+            <ul class="questionsStatusContent">
+                <p class="questionsOneboxArrow"><img src="static/img/arrow.png"></p>
+                <li class="questionsAnswerWord">◯◯◯◯◯◯◯◯◯◯</li>
+                <li class="questionsStatus">
+                    <img src="static/img/correctanswer.png"> 
+                </li>
                 <li>
                     <ul class="questionsCountbox">
                         <li class="questionsCountTitle">間違った数</li>
-                        <li class="questionsCount">{{item["past"]}}</li>
+                        <li class="questionsCount">00</li>
                     </ul> 
                 </li>
             </ul>
         </div>
         {% endfor %}
     </section>
-
-    <div><a class="btn topBack" href="/">トップに戻る</a></div>
+    <div class="btnContent"><a class="btn topBack" href="/">トップに戻る</a></div>
 </main>
 {% endblock %}

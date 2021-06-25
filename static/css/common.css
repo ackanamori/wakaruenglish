@@ -4,7 +4,6 @@ body {
 	color: #5D4B39;
 }
 
-
 .btn {
 	display: inline-block;
 	font-size: 15px;
@@ -13,9 +12,8 @@ body {
 	letter-spacing: 0.08em;
 	padding: 12px 0;
 	width: 274px;
-	border-radius: 3px;
+	border-radius: 5px;
 	text-align: center;
-	font-weight: bold;
 }
 
 .wakaruHeader {
@@ -69,4 +67,28 @@ body {
 
 .titlestyle {
 	border-bottom: 2px solid #E0E0E0;
+}
+
+.btnContent { 
+	width: 100%;
+	margin: 20px auto;
+	text-align: center;
+}
+
+.footerTextCopylight {
+	background-color: #333333;
+	text-align: center;
+	color: white;
+	padding: 16px;
+	font-size: 12px;
+}
+
+.mainTitle {
+	font-size: 15px;
+	margin-bottom: 20px;
+}
+
+.basicText {
+	font-size: 12px;
+	margin-bottom: 10px;
 }

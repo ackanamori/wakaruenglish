@@ -1,0 +1,34 @@
+.wakaruHeaderLogo,
+.wakaruHeaderbtnlist {
+    display: none;
+}
+
+.aboutService,
+.topLogo {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.topLogo img {
+    margin: 25px 0;
+    width: 112px;
+}
+
+.aboutServiceText {
+    font-size: 13px;
+    line-height: 2em;
+}
+
+.loginBtn {
+    margin-bottom: 15px;
+    background-color: #B49674;
+}
+
+.entryBtn {
+    background-color: #E65F6E;
+}
+
+.topLogin {
+    margin-bottom: 40px;
+}

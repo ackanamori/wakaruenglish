@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/mypage.css') }}">
-<h1 class="pageTitle">マイページ</h1>
+<!--20210626 mikiadd  html_user_name[0]  -->
+<h1 class="pageTitle">{{html_user_name[0]}}さん　マイページ</h1>
 <section class="levelBox">
     <h2 class="leveltitle">レベル7</h2>
     <p class="levelText basicText">動詞の過去形を聞いて、入力しよう！</p>
@@ -14,15 +15,17 @@
             <p class="scoerTitle">現在正解</p>
         </div>
         <div class="scoerBox">
-            <div class="scoerBox">0</div>
+            <!--20210626 mikiadd  html_user_ok_num[0]  -->
+            <div class="scoerBox">{{html_user_ok_num[0]}}</div>
             <div class="">/</div>
             <div class="scoerQuestionsNumber">78</div> 
         </div>
     </div>
     <div class="mypageBtnbox">
-        <div><a href="exam" class="btn examtartBtn examstart">テストスタート</a></div>
-        <div><a href="exam" class="btn wordlistBtn">単語一覧を見る</a></div>
-        <div><a href="exam" class="btn clearBtn examClear">クリア</a></div>
+        <div><a href="/exam" class="btn examtartBtn examstart">テストスタート</a></div>
+        <div><a href="/wordlist" class="btn wordlistBtn">単語一覧を見る</a></div>
+        <div><a href="/exam" class="btn clearBtn examClear">クリア</a></div>
+            <p>{{user_results}}</p>
     </div>
 </section>
 {% endblock %}

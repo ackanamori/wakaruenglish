@@ -24,7 +24,7 @@ def entry():
     return render_template('entry.html')
 
 @app.route('/entry',methods=["POST"])
-def entry():
+def entry_post():
     #  登録ページを表示させる
 
         # 登録ページで登録ボタンを押した時に走る処理
@@ -38,7 +38,7 @@ def entry():
         c.execute("insert into persons values(null, ?,?)",(name, password))
         conn.commit()
 
-        c.execute('select user_id from persons where rowid = last_insert_rowid()')
+        
         
         conn.close()
         return redirect('/login')

@@ -18,17 +18,15 @@ def index():
 # ------------------登録----------------------
 # GET  /register => 登録画面を表示
 # POST /register => 登録処理をする
-@app.route('/entry',methods=["GET", "POST"])
-def register():
-    #  登録ページを表示させる
-    if request.method == "GET":
-        if 'user_id' in session :
-            return redirect ('/mypage')
-        else:
-            return render_template("entry.html")
 
-    # ここからPOSTの処理
-    else:
+@app.route('/entry')
+def entry():
+    return render_template('entry.html')
+
+@app.route('/entry',methods=["POST"])
+def entry():
+    #  登録ページを表示させる
+
         # 登録ページで登録ボタンを押した時に走る処理
         name = request.form.get("name")
         password = request.form.get("password")
@@ -39,6 +37,9 @@ def register():
         # 課題4の答えはここ
         c.execute("insert into persons values(null, ?,?)",(name, password))
         conn.commit()
+
+        c.execute('select user_id from persons where rowid = last_insert_rowid()')
+        
         conn.close()
         return redirect('/login')
 

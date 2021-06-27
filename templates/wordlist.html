@@ -4,44 +4,24 @@
 <h1 class="pageTitle pageTitle">単語一覧</h1>
 <main>
     <!-- 一覧表示用 -->
-    <!-- <table class="questionsListContent">
-        {%for item in html_wordlist %}
-        <tr class="questionsOnebox">
-            <th class="questionsWordId">{{item["word_id"]}}</th>
-            <th class="questionsAudio">
-                <audio controls>
-                    <source src="../static/audio/{{item['voice_past']}}">
-                </audio>
-            </th>           
-            <th class="questionsWord">{{item["past"]}}</th>
-            <th class="questionsStatus">{{item["past"]}}</th>
-            <th class="questionsCountbox">
-                <ul>
-                    <li class="questionsCountTitle">間違った数</li>
-                    <li class="questionsCount">{{item["past"]}}</li>
-                </ul>
-            </th>
-        </tr>
-        {% endfor %}
-    </table> -->
-    <!-- 一覧表示用 -->
     <section class="questionsListContent">
         {%for item in html_wordlist %}
         <div class="questionsOnebox">
             <ul>
                 <li class="questionsWordId">{{item["word_id"]}}</li>
-                <li class=questionsAudio>
+                <li class="questionsAudio">
                     <audio controls>
                         <source src="../static/audio/{{item['voice_past']}}">
                     </audio>
                 </li>
+                <li class="questionsWordpast">{{item["past"]}}</li>
             </ul>
             <ul>
-                <li class="questionsStatus">{{item["past"]}}</li>
+                <li class="questionsStatus">{{item["result_ok"]}}</li>
                 <li>
                     <ul class="questionsCountbox">
                         <li class="questionsCountTitle">間違った数</li>
-                        <li class="questionsCount">{{item["past"]}}</li>
+                        <li class="questionsCount">{{item["result_ng"]}}</li>
                     </ul> 
                 </li>
             </ul>

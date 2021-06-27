@@ -60,41 +60,57 @@ def login_post():
             return render_template("login.html")
         else:
             session['user_id'] = user_id[0]
-            print('user_id[0]')
-            user_id=user_id[0]
-            print('user_id')
             return redirect("/mypage")      
 
 
 @app.route("/mypage")
 def mypage():
+    #セッションにユーザーidがあるかを確認
     if "user_id" in session:
-        user_id= session['user_id']
+        #セッションのユーザーidの値を、変数user_idに代入
+        user_id = session['user_id']
+        print(user_id)
+
+        #dbに接続する
         conn = sqlite3.connect('wakaen.db')
         c = conn.cursor()
+
+        #personsテーブルからuser_idの人のuser_nameを取得し、変数user_nameに代入
         c.execute("SELECT user_name FROM persons WHERE user_id = ?",(user_id, ))  
         user_name=c.fetchone()
-        print('user_name',user_name)
 
+        #wordsテーブルにresultsテーブルを外部結合。resultsはresults_id、wordsはword_idをキー。単語一覧と結果を取得し変数配列wordlistに代入
+        c.execute("select id,voice_past,past,result_ok,result_ng FROM words LEFT OUTER JOIN results ON  results.results_id = words.word_id") 
+        wordlist = []
+        for row in c.fetchall():  #row は変数名にc.fetchallを入れていく
+            wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3], "result_ng": row[4]}) 
+        print(wordlist)
 
-        c.execute("SELECT word_no,result_ok,result_ng FROM results WHERE user_id = ?",(user_id, ))  
-        user_results = c.fetchall()
-        print('user_results',user_results)
-
+        #正解数をカウント        
         result_ok=1
         c.execute("SELECT count(result_ok) from results WHERE user_id = ? and result_ok=?",(user_id,result_ok))  
         user_ok_num= c.fetchall()
 
-        print('user_results',user_ok_num)
-        
         c.close()    
-        return render_template('mypage.html',html_user_ok_num=user_ok_num, html_user_name = user_name)
-    
+        return render_template('mypage.html', html_user_name = user_name, html_user_ok_num=user_ok_num[0],html_wordlist=wordlist)
+    else:
+        return redirect("/login") 
 
 @app.route("/wordlist")
 def wordlist():
+    if "user_id" in session:
+        user_id= session['user_id']
+        conn = sqlite3.connect('wakaen.db')
+        c = conn.cursor()
+
+        #wordsテーブルにresultsテーブルを外部結合。resultsはresults_id、wordsはword_idをキー。単語一覧と結果を取得し変数配列wordlistに代入
+        c.execute("select id,voice_past,past,result_ok,result_ng FROM words LEFT OUTER JOIN results ON  results.results_id = words.word_id") 
+        wordlist = []
+        for row in c.fetchall(): 
+            wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3], "result_ng": row[4]}) 
+        print(wordlist)
    
-    return render_template('wordlist.html')
+    return render_template('wordlist.html',html_wordlist=wordlist)
 
 @app.route("/exam")
 def exam():

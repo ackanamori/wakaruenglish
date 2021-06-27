@@ -109,12 +109,14 @@ def wordlist():
         for row in c.fetchall(): 
             wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3], "result_ng": row[4]}) 
         print(wordlist)
-   
-    return render_template('wordlist.html',html_wordlist=wordlist)
+        c.close()    
+        return render_template('wordlist.html',html_wordlist=wordlist)
+    else:
+        return redirect("/login") 
 
 @app.route("/exam")
 def exam():
-   
+     
     return render_template('exam.html')
 
 @app.route("/result")

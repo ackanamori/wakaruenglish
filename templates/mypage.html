@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/mypage.css') }}">
-<h1 class="pageTitle">マイページ</h1>
+
+<h1 class="pageTitle">{{html_user_name[0]}}さん　マイページ</h1>
 <section class="leveContent">
-    <div class="leveltitleBox titlestyle">
+    <div class="leveltitleBox titlestyle levelBox">
         <h2 class="leveltitle">レベル7</h2>
     </div>
     <p class="levelText basicText">動詞の過去形を聞いて、入力しよう！</p>
@@ -17,15 +18,40 @@
             <p class="scoerTitle">現在<br>正解</p>
         </div>
         <div class="scoerBox">
-            <div class="scoerBoxCount">0</div>
+            <!--20210626 mikiadd  html_user_ok_num[0]  -->
+            <div class="scoerBoxCount scoerBox">{{html_user_ok_num[0]}}</div>
             <div class="scoerBoxCount">/</div>
             <div class="scoerQuestionsNumber">78</div> 
         </div>
     </div>
     <div class="mypageBtnbox">
-        <div><a href="exam" class="btn examtartBtn examstart">テストスタート</a></div>
-        <div><a href="exam" class="btn wordlistBtn">単語一覧を見る</a></div>
-        <div><a href="exam" class="btn clearBtn examClear">クリア</a></div>
+        <div><a href="/exam" class="btn examtartBtn examstart">テストスタート</a></div>
+        <div><a href="/wordlist" class="btn wordlistBtn">単語一覧を見る</a></div>
+        <div><a href="/exam" class="btn clearBtn examClear">クリア</a></div>      
     </div>
 </section>
+<!--<section class="questionsListContent">
+    {%for item in html_wordlist %}
+    <div class="questionsOnebox">
+        <ul>
+            <li class="questionsWordId">{{item["word_id"]}}</li>
+            <li class="questionsAudio">
+                <audio controls>
+                    <source src="../static/audio/{{item['voice_past']}}">
+                </audio>
+            </li>
+        </ul>
+        <ul>
+            <li class="questionsStatus">{{item["result_ok"]}}</li>
+            <li>
+                <ul class="questionsCountbox">
+                    <li class="questionsCountTitle">間違った数</li>
+                    <li class="questionsCount">{{item["result_ng"]}}</li>
+                </ul> 
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+</section>
+三木追加修正お願いします ここまで-->
 {% endblock %}

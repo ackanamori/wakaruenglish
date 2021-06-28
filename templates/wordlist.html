@@ -3,7 +3,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/wordlist.css') }}">
 <h1 class="pageTitle pageTitle">単語一覧</h1>
 <main>
-    <section class="questionsListContent">
+
+    <!-- 一覧表示用 -->
+  <section class="questionsListContent">
         <div class="leveltitleBox titlestyle"> 
             <h2 class="leveltitle">レベル7</h2>
             <dl class="scoerBox">
@@ -15,24 +17,23 @@
         </div>  
         {%for item in html_wordlist %}
         <div class="questionsOneContent">
-            <ul class="questionsOnebox">
+            <ul class="questionsOnebox" >
+                <li class="questionsWordId">{{item["word_id"]}}</li>
                 <li class="questionsAudio">
-                    <p class="questionsWordId">{{item["word_id"]}}</p>
                     <audio controls>
                         <source src="../static/audio/{{item['voice_past']}}">
                     </audio>
                 </li>
+                <li class="questionsWordpast">{{item["past"]}}</li>
             </ul>
             <ul class="questionsStatusContent">
                 <p class="questionsOneboxArrow"><img src="static/img/arrow.png"></p>
-                <li class="questionsAnswerWord">◯◯◯◯◯◯◯◯◯◯</li>
-                <li class="questionsStatus">
-                    <img src="static/img/correctanswer.png"> 
-                </li>
+              <li class="questionsAnswerWord">◯◯◯◯◯◯◯◯◯◯</li>
+                <li class="questionsStatus questionsAnswerWord">{{item["result_ok"]}}</li>
                 <li>
                     <ul class="questionsCountbox">
                         <li class="questionsCountTitle">間違った数</li>
-                        <li class="questionsCount">00</li>
+                        <li class="questionsCount">{{item["result_ng"]}}</li>
                     </ul> 
                 </li>
             </ul>

@@ -1,16 +1,3 @@
-.leveltitleBox {
-    width: 100%;
-    padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.leveltitle { 
-    font-size: 17px;
-    font-weight: bold;
-    margin-left: 16px;
-}
-
 .scoerBox {
     display: flex;
     margin-right: 16px;

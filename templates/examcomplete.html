@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/exam.css') }}">
-<h1 class="pageTitle pageTitle">全問終了</h1>
+<h1 class="pageTitle numberQuestionsContent">全問終了</h1>
 <section class="completecontent">
-    <p>おめでとう!</p>
-    <div><a class="btn wordlislistBack" href="/wordlist">一覧に戻る</a></div>
+    <p class="completeText">おめでとう!</p>
+    <img class="completeillust" src="static/img/completeicon.png" alt="イラスト">
+    <div><a class="btn wordlisBack" href="/wordlist">結果を見に行く</a></div>
     <div><a class="btn topBack" href="/">トップに戻る</a></div>
-    <img src="static/img/completeicon.png" alt="イラスト">
 </section>
 {% endblock %}

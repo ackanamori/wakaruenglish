@@ -133,6 +133,13 @@ input {
 	margin-bottom: 20px;
 }
 
+.leveltitleBox {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
 .leveltitle { 
     font-size: 17px;
     font-weight: bold;

@@ -1,0 +1,75 @@
+.levelText {
+	text-align: center;
+    margin-top: 30px;
+}
+
+.descriptionBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.stepArrow img {
+    width: 8px;
+    margin: 0 10px;
+}
+
+.step {
+    background-color: #B49674;
+    color: white;
+    border-radius: 100px;
+    padding: 10px 15px;
+    font-size: 12px;
+}
+
+.scoerContent {
+    width: 80%;
+    display: flex;
+    margin:  0 auto;
+    text-align: center;
+    margin-bottom: 20px;   
+}
+
+.scoerTitle {
+    height: 66px;
+    display: flex;
+    align-items: center;
+    background-color: #00B0EC;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px 0 0 8px;
+    line-height: 1.3em;
+    letter-spacing: 0.05em;
+    padding: 0 10px;
+}
+
+.scoerBox {
+    width: 80%;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    background-color: #F5F5F5;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 0 8px 8px 0;
+}
+
+.scoerBoxCount,
+.scoerQuestionsNumber {
+    margin: 0 auto;
+ }
+
+ .mypageBtnbox {
+     width: 276px;
+     margin: 0 auto 30px;
+ }
+
+ .btn {
+     margin-bottom: 10px;
+ }
+
+ .examstart {
+     background-color: #E65F6E;
+ }

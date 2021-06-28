@@ -2,20 +2,23 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/mypage.css') }}">
 <h1 class="pageTitle">マイページ</h1>
-<section class="leveltitleBox">
-    <h2 class="leveltitle">レベル7</h2>
+<section class="leveContent">
+    <div class="leveltitleBox titlestyle">
+        <h2 class="leveltitle">レベル7</h2>
+    </div>
     <p class="levelText basicText">動詞の過去形を聞いて、入力しよう！</p>
     <ul class="descriptionBox">
-        <li class="">聞いて</li>
-        <li class="">入力</li>
+        <li class="step">聞いて</li>
+        <li class="stepArrow"><img src="static/img/arrow.png"></li>
+        <li class="step">入力</li>
     </ul>
     <div class="scoerContent">
         <div class="scoerTitleBox">
-            <p class="scoerTitle">現在正解</p>
+            <p class="scoerTitle">現在<br>正解</p>
         </div>
         <div class="scoerBox">
             <div class="scoerBoxCount">0</div>
-            <div class="">/</div>
+            <div class="scoerBoxCount">/</div>
             <div class="scoerQuestionsNumber">78</div> 
         </div>
     </div>

@@ -24,22 +24,32 @@
                         <source src="../static/audio/{{item['voice_past']}}">
                     </audio>
                 </li>
-                <li class="questionsWordpast">{{item["past"]}}</li>
             </ul>
             <ul class="questionsStatusContent">
-                <p class="questionsOneboxArrow"><img src="static/img/arrow.png"></p>
-              <li class="questionsAnswerWord">◯◯◯◯◯◯◯◯◯◯</li>
-                <li class="questionsStatus questionsAnswerWord">{{item["result_ok"]}}</li>
+                <li class="questionsAnswerWordBox">
+                    <ul>
+                        <!-- <p class="questionsOneboxArrow"><img src="static/img/arrow.png"></p> -->
+                        <li class="questionsAnswerWord questionsWordpast">{{item["past"]}}</li>
+                    </ul>
+                </li>
                 <li>
-                    <ul class="questionsCountbox">
-                        <li class="questionsCountTitle">間違った数</li>
-                        <li class="questionsCount">{{item["result_ng"]}}</li>
-                    </ul> 
+                    <ul class="questionsStatusBox">
+                        <li class="questionsStatus">
+                            {{item["result_ok"]}}
+                        </li>
+                        <li>
+                            <ul class="questionsCountBox">
+                                <li class="questionsCountTitle">間違った数</li>
+                                <li class="questionsCount">{{item["result_ng"]}}</li>
+                            </ul> 
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
+
         {% endfor %}
     </section>
-    <div class="btnContent"><a class="btn topBack" href="/">トップに戻る</a></div>
+    <div class="btnContent"><a class="btn topBack" href="/mypage">マイページに戻る</a></div>
 </main>
 {% endblock %}

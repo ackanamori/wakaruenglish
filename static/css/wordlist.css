@@ -23,64 +23,67 @@
 
 .questionsOneContent {
     width: 90%;
-    padding: 16px 0;
-    margin: 0 auto;
+    padding: 0 0 20px;
+    margin: 30px auto 0;
     border-bottom: 1px solid #D8D8D8;
 }
 
-.questionsAnswerWord {
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    margin-right: 20px;
-}
-
-.questionsAudio {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.questionsWordId {
-    font-size: 13px;
-    margin-right: 10px;
+.questionsOneContent:last-child {
+    border: none;
 }
 
 .questionsOnebox {
-    margin:  0  auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-.questionsOneboxArrow img {
-    margin-right: 15px;
-    width: 9px;
+.questionsWordId {
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 10px;
+    background-color: #FF8200;
+    color: white;
+    padding: 15px 10px;
+    border-radius: 3px;
 }
-
 .questionsStatusContent {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.questionsStatus img{
-    position: relative;
-    top: 2px;
-    width: 30px;
+.questionsStatusBox {
+    display: flex;
+    align-items: center;
 }
 
-.questionsStatus{
-    margin-right: 15px;
-}
-
-.questionsCountbox {
+.questionsCountBox {
     text-align: center;
 }
 
-.questionsCountTitle { 
-    font-size: 12px;
-    margin-bottom: 6px;
+.questionsAnswerWord { 
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.questionsStatus {
+    margin-right: 12px;
+}
+
+.questionsCountTitle {
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .questionsCount {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
+}
+
+.btnContent {
+    margin-bottom: 40px;
+    border-top: 2px solid #D8D8D8;
+    padding-top: 30px;
 }

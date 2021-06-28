@@ -3,6 +3,8 @@ from flask import Flask, render_template, redirect, request, session
 from flask.templating import render_template
 import random
 import sqlite3
+
+from werkzeug.datastructures import Range
 app = Flask(__name__)
 
 # Flask では標準で Flask.secret_key を設定すると、sessionを使うことができます。この時、Flask では session の内容を署名付きで Cookie に保存します。
@@ -32,9 +34,9 @@ def entry_post():
         conn = sqlite3.connect('wakaen.db')
         c = conn.cursor()
         # 課題4の答えはここ
-        c.execute("insert into persons values(null, ?,?)",(name, password))
-        conn.commit()
-        conn.close()
+        c.execute("INSERT into persons values(null, ?,?)",(name, password))
+        c.commit()
+        c.close()
         return redirect('/login')
 
 # -------------------ログイン----------------------
@@ -51,9 +53,9 @@ def login_post():
         # 存在するかを判定する。レコードが存在するとuser_idに整数が代入、存在しなければ nullが入る
         conn = sqlite3.connect('wakaen.db')
         c = conn.cursor()
-        c.execute("select user_id from persons where user_name = ? and password = ?", (name, password) )
+        c.execute("SELECT user_id FROM persons where user_name = ? and password = ?", (name, password) )
         user_id = c.fetchone()
-        conn.close()
+        c.close()
         # user_id が NULL(PythonではNone)じゃなければログイン成功
         if user_id is None:
             # ログイン失敗すると、ログイン画面に戻す
@@ -80,15 +82,15 @@ def mypage():
         user_name=c.fetchone()
 
         #wordsテーブルにresultsテーブルを外部結合。resultsはresults_id、wordsはword_idをキー。単語一覧と結果を取得し変数配列wordlistに代入
-        c.execute("select id,voice_past,past,result_ok,result_ng FROM words LEFT OUTER JOIN results ON  results.results_id = words.word_id") 
+        c.execute("SELECT id,voice_past,past,result_ok,result_ng FROM words LEFT OUTER JOIN results ON  results.results_id = words.word_id") 
         wordlist = []
         for row in c.fetchall():  #row は変数名にc.fetchallを入れていく
             wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3], "result_ng": row[4]}) 
         print(wordlist)
 
         #正解数をカウント        
-        result_ok=1
-        c.execute("SELECT count(result_ok) from results WHERE user_id = ? and result_ok=?",(user_id,result_ok))  
+        result_ok = "correctanswer.png"
+        c.execute("SELECT count(result_ok) FROM results WHERE user_id = ? and result_ok=?",(user_id,result_ok))  
         user_ok_num= c.fetchall()
 
         c.close()    
@@ -104,11 +106,10 @@ def wordlist():
         c = conn.cursor()
 
         #wordsテーブルにresultsテーブルを外部結合。resultsはresults_id、wordsはword_idをキー。単語一覧と結果を取得し変数配列wordlistに代入
-        c.execute("select id,voice_past,past,result_ok,result_ng FROM words LEFT OUTER JOIN results ON  results.results_id = words.word_id") 
+        c.execute("SELECT id,voice_past,past,result_ok,result_ng FROM words LEFT OUTER JOIN results ON  results.results_id = words.word_id") 
         wordlist = []
         for row in c.fetchall(): 
             wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3], "result_ng": row[4]}) 
-        print(wordlist)
         c.close()    
         return render_template('wordlist.html',html_wordlist=wordlist)
     else:
@@ -116,8 +117,43 @@ def wordlist():
 
 @app.route("/exam")
 def exam():
-     
-    return render_template('exam.html')
+    if "user_id" in session:
+        conn = sqlite3.connect('wakaen.db')
+        c = conn.cursor()
+        user_id= session['user_id']
+        result_ok= "correctanswer.png"
+
+        #resultsテーブルから、user_id一致、result_okがnullの場合と正解でない場合を取得
+        c.execute("SELECT user_id,word_no,result_ok,result_ng FROM results WHERE user_id = ? and (result_ok <> ? or result_ok is NULL)",(user_id,result_ok)) 
+        # c.execute("select results_id,voice_past,past,result_ok,result_ng FROM results LEFT OUTER JOIN words ON  results.results_id = words.word_id WHERE result_ok=1") 
+        remain_exam = []
+        for row in c.fetchall(): 
+            remain_exam.append(row[1]) 
+        expect_exam =random.sample(remain_exam,2)
+        """
+        やったことのない問題
+        正解している問題を削除
+        やったことのある問題
+        正解していないword_noを取得後、ランダムでソート、それを前から順番にやっていく。一覧にもどればリセット
+        """
+
+        # for do_exam_no in expect_exam():
+        #     c.execute("SELECT word_no,voice_past,past, FROM word WHERE id = ?" ,(do_exam_no,)) 
+        #     do_exam = c.fetchone()
+        #     print(do_exam)
+        
+        # result_not_ok=[0,1,2,3,4]
+        # exam_word=rsult_not_ok[random.randint(0,2)]
+        print("remain_exam",remain_exam)
+        print("expect_exam",expect_exam)
+
+  
+        return render_template('exam.html')
+    else:
+        return redirect("/login") 
+
+
+
 
 @app.route("/result")
 def result():

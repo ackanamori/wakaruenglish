@@ -125,18 +125,17 @@ def exam():
 
         #resultsテーブルから、user_id一致、result_okがnullの場合と正解でない場合を取得
         c.execute("SELECT user_id,word_no,result_ok,result_ng FROM results WHERE user_id = ? and (result_ok <> ? or result_ok is NULL)",(user_id,result_ok)) 
-        # c.execute("select results_id,voice_past,past,result_ok,result_ng FROM results LEFT OUTER JOIN words ON  results.results_id = words.word_id WHERE result_ok=1") 
+
         remain_exam = []
         for row in c.fetchall(): 
             remain_exam.append(row[1]) 
-        expect_exam =random.sample(remain_exam,2)
-        """
-        やったことのない問題
-        正解している問題を削除
-        やったことのある問題
-        正解していないword_noを取得後、ランダムでソート、それを前から順番にやっていく。一覧にもどればリセット
-        """
 
+        
+
+        expect_exam =random.sample(remain_exam,2)
+        c.close()
+  
+  
         # for do_exam_no in expect_exam():
         #     c.execute("SELECT word_no,voice_past,past, FROM word WHERE id = ?" ,(do_exam_no,)) 
         #     do_exam = c.fetchone()

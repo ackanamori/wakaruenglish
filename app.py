@@ -35,7 +35,7 @@ def entry_post():
         c = conn.cursor()
         # 課題4の答えはここ
         c.execute("INSERT into persons values(null, ?,?)",(name, password))
-        c.commit()
+        conn.commit()
         c.close()
         return redirect('/login')
 

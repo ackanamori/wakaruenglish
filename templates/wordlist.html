@@ -3,11 +3,21 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/wordlist.css') }}">
 <h1 class="pageTitle pageTitle">単語一覧</h1>
 <main>
+
     <!-- 一覧表示用 -->
-    <section class="questionsListContent">
+  <section class="questionsListContent">
+        <div class="leveltitleBox titlestyle"> 
+            <h2 class="leveltitle">レベル7</h2>
+            <dl class="scoerBox">
+                <dt class="scoerBoxTitle">complete数</dt>
+                <dd class="scoerBoxCount">5</dd>
+                <dd class="scoerBoxSlash">/</dd>
+                <dd class="scoerQuestionsNumber">78</dd>
+            </dl>
+        </div>  
         {%for item in html_wordlist %}
-        <div class="questionsOnebox">
-            <ul>
+        <div class="questionsOneContent">
+            <ul class="questionsOnebox" >
                 <li class="questionsWordId">{{item["word_id"]}}</li>
                 <li class="questionsAudio">
                     <audio controls>
@@ -16,8 +26,10 @@
                 </li>
                 <li class="questionsWordpast">{{item["past"]}}</li>
             </ul>
-            <ul>
-                <li class="questionsStatus">{{item["result_ok"]}}</li>
+            <ul class="questionsStatusContent">
+                <p class="questionsOneboxArrow"><img src="static/img/arrow.png"></p>
+              <li class="questionsAnswerWord">◯◯◯◯◯◯◯◯◯◯</li>
+                <li class="questionsStatus questionsAnswerWord">{{item["result_ok"]}}</li>
                 <li>
                     <ul class="questionsCountbox">
                         <li class="questionsCountTitle">間違った数</li>
@@ -28,7 +40,6 @@
         </div>
         {% endfor %}
     </section>
-
-    <div><a class="btn topBack" href="/">トップに戻る</a></div>
+    <div class="btnContent"><a class="btn topBack" href="/">トップに戻る</a></div>
 </main>
 {% endblock %}

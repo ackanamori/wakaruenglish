@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/exam.css') }}">
 <section class="numberQuestionsContent pageTitle">
     <div class="questionsWhatNumber">1</div>
-    <div>/</div>
+    <div class="questionsSlash">/</div>
     <div class="questionsAll">5</div>
 </section>
 <section class="questionsAudioContent">
@@ -12,13 +12,13 @@
         <source src="../static/audio/3_past.mp3">
     </audio> 
 <!-- 音声再生用 -->
-    <p class="questionsAudioAnnotation">※イヤホンをつけることを推奨します。</p>
+    <p class="questionsAudioAnnotation basicText">※イヤホンをつけることを推奨します。</p>
 </section>
-<section>
+<section class="questionsAnswercontent">
     <div>過去形を入力してください</div>
     <form action="/result" method="POST">
-        <p class="formTitle"><input type ="text" name ="member_password"></p>
-        <input class="btn" type="submit" value="答え合わせをする" name="save">
+        <p class="formTitle"><input class="formInput" type ="text" name ="member_password"></p>
+        <input class="btn answerBtn" type="submit" value="答え合わせをする" name="save">
     </form>
     <div><a class="btn wordlislistBack" href="/wordlist">一覧に戻る</a></div>
 </section>

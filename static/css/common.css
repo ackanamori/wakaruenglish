@@ -4,48 +4,144 @@ body {
 	color: #5D4B39;
 }
 
-/* SP */
-@media screen and (max-width: 963px)  {
-	.pc_only { display: none !important; }
-	.sp_only { display: block !important; }
+.btn {
+	display: inline-block;
+	font-size: 15px;
+	background-color: #6A6A6A;
+	color: white;
+	letter-spacing: 0.08em;
+	width: 274px;
+	padding: 12px 0;
+	border-radius: 5px;
+	text-align: center;
+	border: none;
+}
 
-	.wakaruHeader {
-		width: 100%;
-		border-top: 5px solid #6A6A6A;
-		border-bottom: 2px solid #E0E0E0;
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
-	}
+.wakaruHeader {
+	width: 100%;
+	border-top: 5px solid #6A6A6A;
+	border-bottom: 2px solid #E0E0E0;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
 
-	.wakaruHeaderbtnlist {
-		display: flex;
-		align-items: center;
-		margin-right: 14px;
-	}
+.wakaruHeaderbtnlist {
+	display: flex;
+	align-items: center;
+	margin-right: 14px;
+}
 
-	.wakaruHeaderLogo img {
-		width: 177px;
-		margin-left: 14px;
-		margin-top: 6px;
-	}
+.wakaruHeaderLogo img {
+	width: 177px;
+	margin-left: 14px;
+	margin-top: 6px;
+}
 
-	.btnHomeHeader img {
-		width: 24px;
-	}
+.btnHomeHeader img {
+	width: 24px;
+	position: relative;
+	top: 3px;
+}
 
-	.btnLogoutHeader a{
-		font-size: 12px;
-		color: white;
-		background-color: #6A6A6A;
-		padding: 10px;
-		border-radius: 3px;
-	}
+.btnLogoutHeader{
+	font-size: 12px;
+	color: white;
+	background-color: #6A6A6A;
+	padding: 10px;
+	border-radius: 3px;
+	font-weight: bold;
+}
 
-	.btnLogoutHeader {
-		margin-right: 16px;
-	}
+.btnLogoutHeader {
+	margin-right: 16px;
+}
 
+.pageTitle {
+	background-color: #F0E8DF;
+	color: #333333;
+	padding: 12px 0 14px;
+	font-size: 17px;
+	text-align: center;
+	letter-spacing: 0.08em;
+}
 
+.titlestyle {
+	border-bottom: 2px solid #E0E0E0;
+}
 
+.btnContent { 
+	width: 100%;
+	margin: 20px auto;
+	text-align: center;
+}
+
+.footerTextCopylight {
+	background-color: #333333;
+	text-align: center;
+	color: white;
+	padding: 16px;
+	font-size: 12px;
+}
+
+.mainTitle {
+	font-size: 15px;
+	margin-bottom: 20px;
+}
+
+.formstyle {
+	width: 90%;
+	margin: 0 auto 40px;
+	background-color: #F5F5F5;
+	text-align: center;
+}
+
+form {
+	display: inline-block;
+	text-align: left;
+	margin: 30px 0;
+}
+
+input {
+	width: 264px;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+}
+
+.formTitle {
+	margin-bottom: 4px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.formInput { 
+	margin-bottom: 10px;
+	border: 1px solid #BEBEBE;
+	border-radius: 5px;
+	width: 268px;
+}
+
+.inputBtn { 
+	background-color: #B49674;
+	padding: 0;
+	margin-top: 10px;
+}
+
+.basicText {
+	font-size: 12px;
+	margin-bottom: 20px;
+}
+
+.leveltitleBox {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leveltitle { 
+    font-size: 17px;
+    font-weight: bold;
+    margin-left: 16px;
 }

@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/mypage.css') }}">
-<!--20210626 mikiadd  html_user_name[0]  -->
+
 <h1 class="pageTitle">{{html_user_name[0]}}さん　マイページ</h1>
-<section class="levelBox">
-    <h2 class="leveltitle">レベル7</h2>
+<section class="leveContent">
+    <div class="leveltitleBox titlestyle levelBox">
+        <h2 class="leveltitle">レベル7</h2>
+    </div>
     <p class="levelText basicText">動詞の過去形を聞いて、入力しよう！</p>
     <ul class="descriptionBox">
-        <li class="">聞いて</li>
-        <li class="">入力</li>
+        <li class="step">聞いて</li>
+        <li class="stepArrow"><img src="static/img/arrow.png"></li>
+        <li class="step">入力</li>
     </ul>
     <div class="scoerContent">
         <div class="scoerTitleBox">
-            <p class="scoerTitle">現在正解</p>
+            <p class="scoerTitle">現在<br>正解</p>
         </div>
         <div class="scoerBox">
             <!--20210626 mikiadd  html_user_ok_num[0]  -->
-            <div class="scoerBox">{{html_user_ok_num[0]}}</div>
-            <div class="">/</div>
+            <div class="scoerBoxCount scoerBox">{{html_user_ok_num[0]}}</div>
+            <div class="scoerBoxCount">/</div>
             <div class="scoerQuestionsNumber">78</div> 
         </div>
     </div>
@@ -27,9 +30,7 @@
         <div><a href="/exam" class="btn clearBtn examClear">クリア</a></div>      
     </div>
 </section>
-
-<!-- 三木追加修正お願いします -->
-<section class="questionsListContent">
+<!--<section class="questionsListContent">
     {%for item in html_wordlist %}
     <div class="questionsOnebox">
         <ul>
@@ -52,5 +53,5 @@
     </div>
     {% endfor %}
 </section>
-<!-- 三木追加修正お願いします ここまで-->
+三木追加修正お願いします ここまで-->
 {% endblock %}

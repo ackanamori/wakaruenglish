@@ -1,0 +1,125 @@
+.numberQuestionsContent {
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.questionsSlash {
+    margin: 0 20px;
+}
+
+.questionsAudioContent {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.questionsAudioAnnotation {
+    margin: 10px 0 0;
+}
+
+.questionsAnswercontent,
+.completecontent {
+    text-align: center;
+}
+
+.completecontent {
+    margin-bottom: 40px;
+}
+
+.questionsAnswercontent {
+	margin-bottom: 40px;
+}
+
+form {
+	margin: 0 0 15px;
+}
+
+.formTitle {
+	margin-top: 10px;
+}
+
+.answerBtn { 
+	background-color: #00B0EC;
+	padding: 12px 0 19px;
+}
+
+.CorrectanswerContet,
+.incorrectanswerContent {
+    text-align: center;
+}
+
+.correctanswerText,
+.completeText {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.correctanswerImg {
+    margin-bottom: 30px;
+}
+.correctanswerImg img {
+    width: 45px;
+}
+
+.nextQuestions {
+    margin-bottom: 15px;
+    background-color: #00B0EC;
+}
+
+.wordlislistBack {
+    margin-bottom: 30px;
+}
+
+.answerbox {
+    background-color: #F5F5F5;
+    padding: 30px 0;
+}
+
+.answerTitle {
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.answerbox ul {
+    margin-bottom: 30px;
+}
+
+.answerbox li {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.answerHeading {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.replay {
+    font-size: 15px;
+    background-color: #D6D6D6;
+    padding: 10px 0;
+}
+
+.userAnswerTitle {
+    font-size: 16px;
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.userAnswer {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.wordlisBack {
+    margin-bottom: 15px;
+    background-color: #00B0EC;
+}
+
+.completeillust {
+    width: 70%;
+}

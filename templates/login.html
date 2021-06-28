@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/entrylogin.css') }}">
 <section class="loginEntryTitle">
-<h1>ログイン</h1>
-<p class="basicText">会員の方はお客様IDとパスワードをにご入力ください。</p>
+    <h1 class="mainTitle">ログイン</h1>
+    <p class="basicText">会員の方はお客様IDとパスワードをにご入力ください。</p>
 </section>
 <section class="formstyle">
     <form action="/login" method="POST">
-        <p class="formTitle">お客様ID<input type="text" name="member_name"></p>
-        <p class="formTitle">パスワード<input type ="password" name ="member_password"></p>
-        <input type="submit" value="ログイン" name="save">
+        <div class="formId formTitle">お客様ID</div>
+        <div class="formIdInput formInput"><input type="text" name="member_name"></div>
+        <div class="formPassword formTitle">パスワード</div>
+        <div class="formPasswordInput formInput"><input type ="password" name ="member_password"></div>
+        <input class="btn inputBtn" type="submit" value="ログイン" name="save">
     </form>
 </section>
 {% endblock %}

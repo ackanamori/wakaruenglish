@@ -57,6 +57,11 @@ body {
 	margin-right: 16px;
 }
 
+
+.btnLogoutHeader a:visited {
+    color: white;
+}
+
 .pageTitle {
 	background-color: #F0E8DF;
 	color: #333333;

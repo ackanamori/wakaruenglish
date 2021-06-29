@@ -8,19 +8,22 @@
 </section>
 <section class="questionsAudioContent">
 <!-- 音声再生用 -->
-    <audio controls>
-        <source src="../static/audio/3_past.mp3">
-    </audio> 
+    <div>
+        <audio src="../static/audio/{{html_expect_exam['voice_past']}}"></audio>
+        <div id="play">
+            <div><img src="../static/img/playicon.png"></div>
+            <p class="audioPlayText">音声再生</p>
+        </div>
+    </div>
 <!-- 音声再生用 -->
     <p class="questionsAudioAnnotation basicText">※イヤホンをつけることを推奨します。</p>
 </section>
 <section class="questionsAnswercontent">
     <div>過去形を入力してください</div>
     <form action="/result" method="POST">
-        <p class="formTitle"><input class="formInput" type ="text" name ="member_password"></p>
+        <p class="formTitle"><input class="formInput" type ="text" name ="input_answer"></p>
         <input class="btn answerBtn" type="submit" value="答え合わせをする" name="save">
     </form>
     <div><a class="btn wordlislistBack" href="/wordlist">一覧に戻る</a></div>
 </section>
-
 {% endblock %}

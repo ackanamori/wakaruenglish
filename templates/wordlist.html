@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/wordlist.css') }}">
 <h1 class="pageTitle pageTitle">単語一覧</h1>
 <main>
-
+    <div class="btnBox"><a  class="btn" href="/mypage">マイページに戻る</a></div>
     <!-- 一覧表示用 -->
-  <section class="questionsListContent">
+    <section class="questionsListContent">
         <div class="leveltitleBox titlestyle"> 
             <h2 class="leveltitle">レベル7</h2>
             <dl class="scoerBox">
@@ -35,7 +35,7 @@
                 <li>
                     <ul class="questionsStatusBox">
                         <li class="questionsStatus">
-                            {{item["result_ok"]}}
+                            <img src="../static/img/{{item['result_ok']}}">
                         </li>
                         <li>
                             <ul class="questionsCountBox">

@@ -28,6 +28,19 @@
     border-bottom: 1px solid #D8D8D8;
 }
 
+#play img {
+    width: 25px;
+    padding: 15px 39px;
+    border-radius: 8px;
+    background-color: #FF8200;
+    box-shadow: 2px 2px #C66500;
+}
+
+.questionsOneboxArrow img {
+    width: 10px;
+    margin: 0 12px;
+}
+
 .questionsOneContent:last-child {
     border: none;
 }
@@ -43,9 +56,8 @@
     font-size: 15px;
     font-weight: bold;
     margin-right: 10px;
-    background-color: #FF8200;
-    color: white;
-    padding: 15px 10px;
+    background-color: #D8D8D8;
+    padding: 8px;
     border-radius: 3px;
 }
 .questionsStatusContent {
@@ -72,6 +84,10 @@
     margin-right: 12px;
 }
 
+.questionsStatus img {
+    width: 30px;
+}
+
 .questionsCountTitle {
     font-size: 14px;
     margin-bottom: 5px;
@@ -86,4 +102,9 @@
     margin-bottom: 40px;
     border-top: 2px solid #D8D8D8;
     padding-top: 30px;
+}
+
+.btnBox {
+    text-align: center;
+    margin: 20px 0 10px;
 }

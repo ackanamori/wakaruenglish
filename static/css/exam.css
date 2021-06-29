@@ -16,7 +16,7 @@
 }
 
 .questionsAudioAnnotation {
-    margin: 10px 0 0;
+    margin: 15px 0 0;
 }
 
 .questionsAnswercontent,
@@ -42,7 +42,7 @@ form {
 
 .answerBtn { 
 	background-color: #00B0EC;
-	padding: 12px 0 19px;
+	padding: 9px 0 19px;
 }
 
 .CorrectanswerContet,
@@ -122,4 +122,29 @@ form {
 
 .completeillust {
     width: 70%;
+}
+
+#play {
+    background-color: #FF8200;
+    width: 164px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px 0;
+    box-shadow: 3px 3px #C66500;
+}
+
+#play img{
+    width: 42px;
+    margin-bottom: 8px;
+}
+
+audio {
+    display: none;
+}
+
+.audioPlayText {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
 }

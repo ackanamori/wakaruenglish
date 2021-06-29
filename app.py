@@ -124,39 +124,52 @@ def exam():
         result_ok= "correctanswer.png"
 
         #resultsテーブルから、user_id一致、result_okがnullの場合と正解でない場合を取得
-        c.execute("SELECT user_id,word_no,result_ok,result_ng FROM results WHERE user_id = ? and (result_ok <> ? or result_ok is NULL)",(user_id,result_ok)) 
+        c.execute("SELECT word_no FROM results WHERE user_id = ? and (result_ok = ?)",(user_id,result_ok)) 
 
-        remain_exam = []
+        #正解しているword番号をすべてremain_exam_noにリストで入れる
+        clear_exam_no = []
         for row in c.fetchall(): 
-            remain_exam.append(row[1]) 
-
+            clear_exam_no.append(row[0]) 
         
+        #すべてのWord番号をall_exam_noに入れ、残っているword番号を
+        all_exam_no = list(range(1, 79))
+        notclear_exam_no = set(all_exam_no) - set(clear_exam_no) 
+        expect_exam_5no =random.sample(notclear_exam_no,1)
+        expect_exam_no=expect_exam_5no[0]-1
+        #word一覧を取得
+        c.execute("SELECT id,voice_past,past,result_ok,result_ng,jp,present,past_participle FROM words LEFT OUTER JOIN results ON  results.results_id = words.word_id") 
+        wordlist = []
+        for row in c.fetchall(): 
+            wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3],"result_ng": row[4], "jp": row[5],  "present": row[6], "past_participle": row[7]}) 
+        c.close()  
 
-        expect_exam =random.sample(remain_exam,2)
-        c.close()
-  
-  
-        # for do_exam_no in expect_exam():
-        #     c.execute("SELECT word_no,voice_past,past, FROM word WHERE id = ?" ,(do_exam_no,)) 
-        #     do_exam = c.fetchone()
-        #     print(do_exam)
-        
-        # result_not_ok=[0,1,2,3,4]
-        # exam_word=rsult_not_ok[random.randint(0,2)]
-        print("remain_exam",remain_exam)
-        print("expect_exam",expect_exam)
+        expect_exam = wordlist[expect_exam_no]
+        print(wordlist[expect_exam_no])
+        # exam_word=
+        # for row1 in range(5):
+        #     expect_exam_no = expect_exam_5no[row1]
+        #     exam_word = wordlist[row1]
 
-  
-        return render_template('exam.html')
+        print("all_exam",all_exam_no)
+        print("notclear_exam_no",notclear_exam_no)
+        print("expect_exam_no",expect_exam_5no)
+        # print("exam_word",exam_word)
+
+        #/resultへ引数
+        # result(notclear_exam_no,expect_exam)
+        return render_template('exam.html',html_expect_exam = expect_exam)
     else:
         return redirect("/login") 
 
-
-
+@app.route("/exam", methods=["POST"])
+def examPost():
+        input_answer = request.form.get("input_answer")
+        result(input_answer)
+        return redirect("/result") 
 
 @app.route("/result")
-def result():
-   
+def result(input_answer):
+    
     return render_template('result.html')
 
 @app.route("/logout")

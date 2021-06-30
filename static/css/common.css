@@ -82,11 +82,14 @@ body {
 }
 
 .footerTextCopylight {
+	width: 100%;
 	background-color: #333333;
 	text-align: center;
 	color: white;
-	padding: 16px;
+	padding: 16px 0;
 	font-size: 12px;
+	position: absolute;
+	bottom: 0;
 }
 
 .mainTitle {

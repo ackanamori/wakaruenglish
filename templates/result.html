@@ -2,78 +2,39 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/exam.css') }}">
 <section class="numberQuestionsContent pageTitle">
-    <div class="questionsWhatNumber">1</div>
+    <div class="questionsWhatNumber">{{html_user_ok_num}}</div>
     <div>/</div>
-    <div class="questionsAll">5</div>
+    <div class="questionsAll">78</div>
 </section>
 <section class="CorrectanswerContet">
-    <div class="correctanswerText">正解</div>
-    <div class="correctanswerImg"><img src="static/img/correctanswer.png"></div>
-    <div><a class="btn nextQuestions">次の問題へ</a></div>
+    <div class="correctanswerText">{{html_result_text}}</div>
+    <div class="correctanswerImg"><img src="static/img/{{html_exam_word['result_ok']}}"></div>
+    <div><a class="btn nextQuestions" href="/exam">次の問題へ</a></div>
     <div><a class="btn wordlislistBack" href="/wordlist">一覧に戻る</a></div>
     <div class="answerbox">
         <div class="answerTitle">答え</div>
         <ul>
             <li class="answerja">
                 <div class="answerHeading">・日本語</div>
-                <div class="answerMeaning">始まる</div>
+                <div class="answerMeaning">{{html_exam_word['jp']}}</div>
             </li>
             <li class="answerPresenttense">
                 <div class="answerHeading">・現在形</div>
-                <div class="answerMeaning">始まる</div>
+                <div class="answerMeaning">{{html_exam_word['present']}}</div>
             </li>
             <li class="answerPasttense">
                 <div class="answerHeading">・過去形</div>
-                <div class="answerMeaning">始まる</div>
+                <div class="answerMeaning">{{html_exam_word['past']}}</div>
             </li>
             <li class="answerPastparticiple">
                 <div class="answerHeading">・過去分詞</div>
-                <div class="answerMeaning">始まる</div>
+                <div class="answerMeaning">{{html_exam_word['past_participle']}}</div>
             </li>
         </ul>
         <div>
             <p class="replay">もう一度音声再生</p>
-            <audio controls>
-                <source src="../static/audio/3_past.mp3">
-            </audio> 
+            <audio src="../static/audio/{{html_exam_word['voice_past']}}"></audio>
         </div>
     </div>
-</section>
-<section class="incorrectanswerContent">
-    <div class="correctanswerText">不正解</div>
-    <div class="correctanswerImg"><img src="static/img/incorrectanswer.png"></div>
-    <div>
-        <div class="userAnswerTitle">あなたの答え</div>
-        <div class="userAnswer">テスト</div>
-    </div>
-    <div class="answerbox">
-        <div class="answerTitle">答え</div>
-        <ul>
-            <li class="answerja">
-                <div class="answerHeading">・日本語</div>
-                <div class="answerMeaning">始まる</div>
-            </li>
-            <li class="answerPresenttense">
-                <div class="answerHeading">・現在形</div>
-                <div class="answerMeaning">始まる</div>
-            </li>
-            <li class="answerPasttense">
-                <div class="answerHeading">・過去形</div>
-                <div class="answerMeaning">始まる</div>
-            </li>
-            <li class="answerPastparticiple">
-                <div class="answerHeading">・過去分詞</div>
-                <div class="answerMeaning">始まる</div>
-            </li>
-        </ul>
-        <div>
-            <p class="replay">もう一度音声再生</p>
-            <audio controls>
-                <source src="../static/audio/3_past.mp3">
-            </audio> 
-        </div>
-    </div>
-    <div><a class="btn nextQuestions">次の問題へ</a></div>
-    <div><a class="btn wordlislistBack" href="/wordlist">一覧に戻る</a></div> 
 </section>
 {% endblock %}

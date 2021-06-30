@@ -2,14 +2,14 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/exam.css') }}">
 <section class="numberQuestionsContent pageTitle">
-    <div class="questionsWhatNumber">1</div>
+    <div class="questionsWhatNumber">{{html_user_ok_num}}</div>
     <div class="questionsSlash">/</div>
-    <div class="questionsAll">5</div>
+    <div class="questionsAll">78</div>
 </section>
 <section class="questionsAudioContent">
 <!-- 音声再生用 -->
     <div>
-        <audio src="../static/audio/{{html_expect_exam['voice_past']}}"></audio>
+        <audio src="../static/audio/{{html_exam_word['voice_past']}}"></audio>
         <div id="play">
             <div><img src="../static/img/playicon.png"></div>
             <p class="audioPlayText">音声再生</p>
@@ -22,6 +22,7 @@
     <div>過去形を入力してください</div>
     <form action="/result" method="POST">
         <p class="formTitle"><input class="formInput" type ="text" name ="input_answer"></p>
+        <input type="hidden" value="{{html_exam_word['word_id']}}" name="word_id">
         <input class="btn answerBtn" type="submit" value="答え合わせをする" name="save">
     </form>
     <div><a class="btn wordlislistBack" href="/wordlist">一覧に戻る</a></div>

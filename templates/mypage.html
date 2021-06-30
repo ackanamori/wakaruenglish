@@ -18,8 +18,7 @@
             <p class="scoerTitle">現在<br>正解</p>
         </div>
         <div class="scoerBox">
-            <!--20210626 mikiadd  html_user_ok_num[0]  -->
-            <div class="scoerBoxCount">{{html_user_ok_num[0]}}</div>
+            <div class="scoerBoxCount">{{html_user_ok_num}}</div>
             <div class="scoerBoxCount">/</div>
             <div class="scoerQuestionsNumber">78</div> 
         </div>
@@ -30,28 +29,4 @@
         <div><a href="/exam" class="btn clearBtn examClear">クリア</a></div>      
     </div>
 </section>
-<!--<section class="questionsListContent">
-    {%for item in html_wordlist %}
-    <div class="questionsOnebox">
-        <ul>
-            <li class="questionsWordId">{{item["word_id"]}}</li>
-            <li class="questionsAudio">
-                <audio controls>
-                    <source src="../static/audio/{{item['voice_past']}}">
-                </audio>
-            </li>
-        </ul>
-        <ul>
-            <li class="questionsStatus">{{item["result_ok"]}}</li>
-            <li>
-                <ul class="questionsCountbox">
-                    <li class="questionsCountTitle">間違った数</li>
-                    <li class="questionsCount">{{item["result_ng"]}}</li>
-                </ul> 
-            </li>
-        </ul>
-    </div>
-    {% endfor %}
-</section>
-三木追加修正お願いします ここまで-->
 {% endblock %}

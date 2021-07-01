@@ -2,6 +2,10 @@ body {
 	background-color: #fff;
 	font-family: "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "Hiragino Sans", Meiryo, sans-serif;
 	color: #5D4B39;
+	min-height: 100vh;
+	position: relative;
+	padding-bottom: 50px;
+    box-sizing: border-box;
 }
 
 .btn {
@@ -88,6 +92,8 @@ body {
 	color: white;
 	padding: 16px 0;
 	font-size: 12px;
+	position: absolute;
+	bottom: 0;
 }
 
 .mainTitle {

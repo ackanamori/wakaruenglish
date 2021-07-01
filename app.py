@@ -27,7 +27,7 @@ def entry():
 @app.route('/entry',methods=["POST"])
 def entry_post():
     #  登録ページを表示させる
-
+# 登録ページで登録ボタンを押した時に走る処理
         name = request.form.get("name")
         password = request.form.get("password")
 
@@ -36,8 +36,8 @@ def entry_post():
         c.execute("select user_name from persons where user_name = ?" ,(name,))
         user_name_ok = c.fetchone()
         c.close()
-        print(user_name_ok)
-        # 登録ページで登録ボタンを押した時に走る処理
+        # print(user_name_ok)
+        
         # print(allname)
         if user_name_ok is None:
             conn = sqlite3.connect('wakaen.db')
@@ -45,12 +45,14 @@ def entry_post():
             c.execute("INSERT into persons values(null, ?,?)",(name, password))
             conn.commit()
             c.close()
-            return redirect("/login")
+            # 登録したことを知らせる
+            # login_message = "登録が完了しました！"
+            return render_template("jump.html")
         else:
             entry_ER = "このIDは使用できません"
-            print("sasa")
+            # print("sasa")
             # 登録失敗すると、登録画面に戻す
-            return render_template("entry.html",html_entry_ER=entry_ER)
+            return render_template("entry.html",html_entry_ER = entry_ER)
                   
 
         #dbに入力

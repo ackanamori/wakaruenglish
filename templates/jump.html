@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jump.css') }}">
+    <meta http-equiv="Refresh" content="3;URL=/login">
+    <title>登録が完了しました</title>
+
+</head>
+<body>
+    <header class="wakaruHeader">
+        <div class="wakaruHeaderLogo"><img src="static/img/logo.png" alt="WAKARU ENGLISH"></div>
+        <ul class="wakaruHeaderbtnlist">
+            <li class="btnLogoutHeader"><a href="/logout">ログアウト</a></li>
+            <li class="btnHomeHeader"><a href="/"><img src="static/img/topicon.png"></a></li>
+        </ul>
+    </header>
+    <p class="touroku">ご登録が完了しました。</p>
+    <p class="touroku">3秒後にログインページに移動します。</p>
+    <img class="coiai_img" src = "static\img\completeicon.png">
+    <footer class="footerTextCopylight">
+        <p>© 2021 team torch</p>
+    </footer>
+</body>
+</html>

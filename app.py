@@ -42,7 +42,8 @@ def entry_post():
 # -------------------ログイン----------------------
 @app.route("/login")
 def login():
-    return render_template('login.html')
+    login_ER=""
+    return render_template('login.html',html_login_ER=login_ER)
 
 @app.route("/login", methods=["POST"])
 def login_post():
@@ -58,8 +59,9 @@ def login_post():
         c.close()
         # user_id が NULL(PythonではNone)じゃなければログイン成功
         if user_id is None:
+            login_ER = "IDかパスワードが間違っています"
             # ログイン失敗すると、ログイン画面に戻す
-            return render_template("login.html")
+            return render_template("login.html",html_login_ER=login_ER)
         else:
             session['user_id'] = user_id[0]
             return redirect("/mypage")      
@@ -100,10 +102,10 @@ def wordlist():
         #正解数をカウント   
         user_ok_num = count_correct(user_id)
         #wordsテーブルにresultsテーブルを外部結合。resultsはresults_id、wordsはword_idをキー。単語一覧と結果を取得し変数配列wordlistに代入
-        c.execute("SELECT id,voice_past,past,result_ok,result_ng FROM words LEFT OUTER JOIN results ON  results.word_no = words.word_id") 
+        c.execute("SELECT id,voice_past,past,result_ok,result_ng,present,jp FROM words LEFT OUTER JOIN results ON  results.word_no = words.word_id") 
         wordlist = []
         for row in c.fetchall(): 
-            wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3], "result_ng": row[4]}) 
+            wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3], "result_ng": row[4], "present": row[5], "jp": row[6]}) 
         c.close()    
         return render_template('wordlist.html',html_wordlist=wordlist,html_user_ok_num=user_ok_num)
     else:
@@ -117,7 +119,9 @@ def count_correct(user_id):
         c.execute("SELECT count(result_ok) FROM results WHERE user_id = ? and result_ok=?",(user_id,result_ok))  
         user_ok_num_tap=c.fetchall()
         user_ok_num=user_ok_num_tap[0][0]
+        c.close()    
         return(user_ok_num)
+
 
 #ユーザーの正解していない番号一覧取得
 def notclear_exam_no(user_id):
@@ -133,6 +137,7 @@ def notclear_exam_no(user_id):
         #すべてのWord番号をall_exam_noに入れ、残っているword番号を notclear_exam_noに入れる
         all_exam_no = list(range(1, 79))
         notclear_exam_no = set(all_exam_no) - set(clear_exam_no) 
+        c.close()    
         return notclear_exam_no
 
 def user_word_list(expect_word_no):
@@ -143,7 +148,7 @@ def user_word_list(expect_word_no):
         wordlist = []
         for row in c.fetchall(): 
             wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3],"result_ng": row[4], "jp": row[5],  "present": row[6], "past_participle": row[7]}) 
-        c.close()  
+
         exam_word = wordlist[expect_word_no]
         # print(wordlist[expect_word_no])    
         return exam_word
@@ -157,14 +162,13 @@ def exam():
         #ユーザーが正解していないリストを取得
         notclear_exam_no_list = notclear_exam_no(user_id)
         #ランダムで1件選ぶ
-        expect_exam_5no = random.sample(notclear_exam_no_list,1)
-        #実施するword番号を配列先頭を取得
-        expect_word_no = expect_exam_5no[0]-1
+        expect_word_no_list = random.sample(notclear_exam_no_list,1)
+        expect_word_no = expect_word_no_list[0]
+        print(expect_word_no)
         #実施するword番号から、wordすべて取得        
         exam_word1 = user_word_list(expect_word_no)
         #正解数をカウント   
         user_ok_num = count_correct(user_id)
-
         return render_template('exam.html',html_user_ok_num=user_ok_num,html_exam_word = exam_word1)
     else:
         return redirect("/login") 
@@ -246,7 +250,7 @@ def result():
     #正解数をカウント   
     user_ok_num = count_correct(user_id)
     print(exam_word)
-    return render_template('result.html',html_user_ok_num=user_ok_num,html_exam_word=exam_word,html_result_text=result_text)
+    return render_template('result.html',html_user_ok_num=user_ok_num,html_exam_word=exam_word,html_result_text=result_text,html_input_answer=input_answer)
 
 
 @app.route("/logout")
@@ -254,5 +258,10 @@ def logout():
     session.pop("user_id",None)
     return redirect('login')
 
+#404画面
+@app.errorhandler(404)
+def errorhandler(error):
+    return render_template('404.html')
+    
 if __name__ == "__main__":
     app.run(debug=True)

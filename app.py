@@ -12,7 +12,7 @@ app.secret_key = 'wakaen'
 
 
 # -----------------トップ-----------------------
-@app.route('/index')
+@app.route('/')
 def index():
     return render_template('index.html')
 
@@ -102,7 +102,7 @@ def wordlist():
         #正解数をカウント   
         user_ok_num = count_correct(user_id)
         #wordsテーブルにresultsテーブルを外部結合。resultsはresults_id、wordsはword_idをキー。単語一覧と結果を取得し変数配列wordlistに代入
-        c.execute("SELECT id,voice_past,past,result_ok,result_ng,present,jp FROM words LEFT OUTER JOIN results ON  results.word_no = words.word_id") 
+        c.execute("SELECT id,voice_past,past,result_ok,result_ng,present,jp FROM words LEFT OUTER JOIN results ON  results.word_no = words.word_id and results.user_id=?",(user_id,)) 
         wordlist = []
         for row in c.fetchall(): 
             wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3], "result_ng": row[4], "present": row[5], "jp": row[6]}) 
@@ -262,6 +262,6 @@ def logout():
 @app.errorhandler(404)
 def errorhandler(error):
     return render_template('404.html')
-    
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -23,7 +23,7 @@
 
 .questionsOneContent {
     width: 90%;
-    padding: 0 0 20px;
+    padding: 0 0 30px;
     margin: 30px auto 0;
     border-bottom: 1px solid #D8D8D8;
 }
@@ -49,20 +49,21 @@
     width: 90%;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .questionsWordId {
     font-size: 15px;
     font-weight: bold;
     margin-right: 10px;
-    background-color: #D8D8D8;
+    background-color: #FF8200;
     padding: 8px;
     border-radius: 3px;
+    color: white;
 }
 .questionsStatusContent {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 }
 
@@ -78,14 +79,26 @@
 .questionsAnswerWord { 
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
+
+.itemPresent,
+.itemJa {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.itemPresent {
+    margin-bottom: 7px;
+}
+
 
 .questionsStatus {
     margin-right: 12px;
 }
 
 .questionsStatus img {
-    width: 30px;
+    width: 40px;
 }
 
 .questionsCountTitle {
@@ -94,7 +107,7 @@
 }
 
 .questionsCount {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
 }
 

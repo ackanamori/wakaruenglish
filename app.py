@@ -28,16 +28,37 @@ def entry():
 def entry_post():
     #  登録ページを表示させる
 
-        # 登録ページで登録ボタンを押した時に走る処理
         name = request.form.get("name")
         password = request.form.get("password")
+
         conn = sqlite3.connect('wakaen.db')
         c = conn.cursor()
-        # 課題4の答えはここ
-        c.execute("INSERT into persons values(null, ?,?)",(name, password))
-        conn.commit()
+        c.execute("select user_name from persons where user_name = ?" ,(name,))
+        user_name_ok = c.fetchone()
         c.close()
-        return redirect('/login')
+        print(user_name_ok)
+        # 登録ページで登録ボタンを押した時に走る処理
+        # print(allname)
+        if user_name_ok is None:
+            conn = sqlite3.connect('wakaen.db')
+            c = conn.cursor()
+            c.execute("INSERT into persons values(null, ?,?)",(name, password))
+            conn.commit()
+            c.close()
+            return redirect("/login")
+        else:
+            entry_ER = "このIDは使用できません"
+            print("sasa")
+            # 登録失敗すると、登録画面に戻す
+            return render_template("entry.html",html_entry_ER=entry_ER)
+                  
+
+        #dbに入力
+        # c.execute("insert into persons("name", "password") select user_name,password from persons where not exists(select user_name from persons where user_name = "name" )")
+        # c.execute("INSERT into persons values(null, ?,?)",(name, password))
+        
+        
+        
 
 # -------------------ログイン----------------------
 @app.route("/login")

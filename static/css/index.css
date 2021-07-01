@@ -32,3 +32,14 @@ display: none;
 .topLogin {
     margin-bottom: 40px;
 }
+
+.moya{
+    background-color: rgb(168, 214, 245);
+    border-radius: 80% 30% 40% 20%/30% 50% 70% 90%;
+}
+ 
+.eigo{
+    font-size: 16px;
+    font-weight:550;
+ 
+}

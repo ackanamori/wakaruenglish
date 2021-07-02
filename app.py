@@ -35,19 +35,26 @@ def entry_post():
         c = conn.cursor()
         c.execute("select user_name from persons where user_name = ?" ,(name,))
         user_name_ok = c.fetchone()
-        c.close()
         # print(user_name_ok)
-        
         # print(allname)
         if user_name_ok is None:
-            conn = sqlite3.connect('wakaen.db')
-            c = conn.cursor()
+            # conn = sqlite3.connect('wakaen.db')
+            # c = conn.cursor()
             c.execute("INSERT into persons values(null, ?,?)",(name, password))
             conn.commit()
+
+            c.execute("SELECT user_id from persons WHERE  user_name = ?" ,(name,))
+            user_id_tap = c.fetchone()
+            user_id=user_id_tap[0]
+            mkrecord_result_ck_tap = make_user_record(user_id)
+        
             c.close()
-            # 登録したことを知らせる
-            # login_message = "登録が完了しました！"
-            return render_template("jump.html")
+            if mkrecord_result_ck == 1:
+                # 登録したことを知らせる
+                # login_message = "登録が完了しました！"
+                return render_template("jump.html")
+            else:
+                return redirect('/')
         else:
             entry_ER = "このIDは使用できません"
             # print("sasa")
@@ -59,7 +66,30 @@ def entry_post():
         # c.execute("insert into persons("name", "password") select user_name,password from persons where not exists(select user_name from persons where user_name = "name" )")
         # c.execute("INSERT into persons values(null, ?,?)",(name, password))
         
-        
+def make_user_record(user_id): 
+    #セッションのユーザーidの値を、変数user_idに代入
+    mkrecord_user_id = user_id
+    conn = sqlite3.connect('wakaen.db')
+    c = conn.cursor()
+    #１user_id が一致するレコードがあればresults_idの数を数える
+    c.execute("SELECT COUNT(results_id) FROM results WHERE user_id = ?", (mkrecord_user_id,))
+    result_record_tap = c.fetchall()
+    #result_record_tap はタプル型の配列 [(0,)]となるため、数字だけにしてresult_recordに入れる
+    result_record = result_record_tap[0][0]
+       
+    #２もしレコードがなければ作る
+    level_no = 7
+    if result_record == 0:
+        for word_no in range(1, 79):
+            print(word_no)
+            c.execute("INSERT INTO results VALUES(null, ?,?,?,?,?)",(mkrecord_user_id, level_no,word_no,"notyet.png",0))
+            conn.commit()
+        mkrecord_result=1
+        return(mkrecord_result)
+    #もしあれば処理なし
+    else:
+        mkrecord_result=0    
+        return(mkrecord_result)        
         
 
 # -------------------ログイン----------------------
@@ -122,7 +152,7 @@ def mypage():
   
         return render_template('mypage.html', html_user_name = user_name, html_user_ok_num=user_ok_num)
     else:
-        return redirect("/login") 
+        return redirect("/") 
 
 def user_word_results(user_id):
         conn = sqlite3.connect('wakaen.db')
@@ -248,19 +278,19 @@ def result():
 
     conn = sqlite3.connect('wakaen.db')
     c = conn.cursor()
-    #１user_id word_idが一致するレコードがあればresults_idの数を数える
-    c.execute("SELECT COUNT(results_id) FROM results WHERE user_id = ? and word_no = ?", (user_id, word_no))
-    result_record_tap = c.fetchall()
-    #result_record_tap はタプル型の配列 [(0,)]となるため、数字だけにしてresult_recordに入れる
-    result_record = result_record_tap[0][0]
+    # #１user_id word_idが一致するレコードがあればresults_idの数を数える
+    # c.execute("SELECT COUNT(results_id) FROM results WHERE user_id = ? and word_no = ?", (user_id, word_no))
+    # result_record_tap = c.fetchall()
+    # #result_record_tap はタプル型の配列 [(0,)]となるため、数字だけにしてresult_recordに入れる
+    # result_record = result_record_tap[0][0]
 
-    #２もしレコードがなければ作る
-    if result_record == 0:
-        c.execute("INSERT INTO results VALUES(null, ?,?,?,?,?)",(user_id, level_no,word_no,"notyet.png",0))
-        conn.commit()
-    #もしあれば処理なし
-    else:
-         pass
+    # #２もしレコードがなければ作る
+    # if result_record == 0:
+    #     c.execute("INSERT INTO results VALUES(null, ?,?,?,?,?)",(user_id, level_no,word_no,"notyet.png",0))
+    #     conn.commit()
+    # #もしあれば処理なし
+    # else:
+    #      pass
     
     #３上記２で作ったもしくは存在しているレコードの主キーであるresults_idを取得。結果書き込みの際に使用する
     c.execute("SELECT results_id FROM results WHERE user_id = ? and word_no = ?", (user_id, word_no) )

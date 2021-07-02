@@ -47,7 +47,7 @@ def entry_post():
             user_id_tap = c.fetchone()
             user_id=user_id_tap[0]
             mkrecord_result_ck_tap = make_user_record(user_id)
-        
+            mkrecord_result_ck=mkrecord_result_ck_tap[0]
             c.close()
             if mkrecord_result_ck == 1:
                 # 登録したことを知らせる

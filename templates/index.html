@@ -1,115 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <section class="topLogo">
-         <h1><p><img src="static/img/toplogo.png" alt="WAKARU ENGLISH"></p></h1>
-    </section>
-    <section class="aboutService">
-        <main>
-            <p class="aboutServiceText">
-                <span class="front"> 「英語を話したい！だけど何からすればいいか分からない」 </span><br>
-                
-                「～をする」の意味がはいってる動詞を覚えておけばやりとりはスムーズにいくはず！<br>
-               
-                「英語の動詞を覚えたいけど多すぎて、何から覚えたらいいかわからない。」<br>
-
-                そんなあなたの<span class="moya">「もやっ」</span>を解消します<br>
-            </p>
-    </main>
+<div class="indexcontent">
+    <section class="mainImg">
+        <img src="/static/img/mainimg@2x.png">
     </section>
     <section class="topLogin btnContent">
         <div><a class="loginBtn btn" href="/login">ログインはこちら</a></div>
         <div><a class="entryBtn btn" href="/entry">新規会員登録する</a></div>
     </section> 
 
-    <section class="aboutServic">
-        <main>
-            <p class="aboutServiceText">
-                会議で英語を聞き取るときに、不規則動詞が瞬時に理解できず、<br>
-                会話に置いていかれ、困っている人向けです。<br>
-                <span class="">つまり、ある程度、英語を理解している中級者向けのニッチなサービスです。</span><br>
-
-            </p>
-        </main>
+    <section class="aboutContent">
+        <img src="/static/img/test_01@2x.png">
     </section>
-
-    <section class="aboutServic">
-        <main>
-            <p class="aboutServiceText">
-                <span class="">不規則動詞</span>って何ってなりますよね？<br>
-                動詞の過去形で良く見かけるのは「ed」が付くわかりやすい形。<br>
-                これは、 <span class="">規則動詞</span>と呼ばれています<br>
-                でも実際には、「ed」がつかない過去形も多くあるのです。<br>
-                でも聞くと、めっちゃわかりにくいんです。<br>
-                <span>でもそれがよく会話で使われるんです。</span><br>
-               
-            </p>
-        </main>
-    </section>
-
-    <section class="aboutServic">
-        <main>
-            <p class="aboutServiceText">
-                <span class=""></span><br>
-                このサイトではその不規則動詞の<br>
-                過去形の音声を聴いて<br>
-                聞き取れているかチェックできるサイトです！<br>
-            </p>
-        </main>
-    </section>
-
     <section class="topLogin btnContent">
         <div><a class="entryBtn btn" href="/entry">新規会員登録する</a></div>
     </section> 
-<!-- アプリの説明 -->
-    <section class="topLogin btnContent">
-        <main>
-            <p class="aboutServiceText">
-                <span class="">実際にどんなことができるの？</span><br>
-                
-            </p>
-        </main>
+    <section class="aboutServic">
+        <div class="aboutServicBox1">
+            <img src="/static/img/step1@2x.png">
+        </div>
+        <div class="aboutServicBox2">
+            <img src="/static/img/step2@2x.png">
+        </div>
     </section>
 
-    <section class="topLogin btnContent">
-        <main>
-            <p class="aboutServiceText">
-                <span class="">マイページ</span><br>
-
-                <h1><img src="static\img\mypage.png" ></h1>
-                テストスタートから、単語テストをすることができます。<br>
-                単語一覧から、今までテストした単語の正誤と、<br>
-                単語の発音を聞くことができます。 <br>
-
-            </p>
-            <p class="aboutServiceText">
-                <span class="">テスト</span><br>
-
-                <h1><img src="static\img\listentest.png" ></h1>
-                音声の再生を押すと、単語の音声が流れます。<br>
-                聞いた単語を入力すると、答え合わせで答えの確認をすることができます。<br>
-                テストを終わりたいときは一覧に戻るで終わることができます。 <br>
-
-            </p>
-            <p class="aboutServiceText">
-                <span class=""></span><br>
-
-                <h1><img src="static\img\colect.png" ></h1>
-                <h1><img src="static\img\miss.png" ></h1>
-                
-
-            </p>
-            <p class="aboutServiceText">
-                <span class="">単語一覧</span><br>
-
-                <h1><img src="static\img\itirann.png" ></h1>
-                単語一覧では、今までテストした単語の正解、不正解と、<br>
-                何回不正解だったかを見ることができます。<br>
-                単語の音声も聞けるので、覚えていない単語を確認することが出来ます。<br>
-
-                
-
-            </p>
-        </main>
+    <section class="lettryBox">
+        <div>
+            <img src="/static/img/iconimg@2x.png">
+            <div><a class="entryBtn btn" href="/entry">新規会員登録する</a></div>
+        </div>
     </section>
+</div>
 {% endblock %}

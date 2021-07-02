@@ -43,3 +43,46 @@ display: none;
     font-weight:550;
  
 }
+
+.indexcontent {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.mainImg img {
+    width: 100%;
+}
+
+.aboutContent,
+.aboutServic {
+    width: 100%;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.aboutContent img,
+.aboutServic img {
+    width: 80%;
+}
+
+.aboutServicBox1 {
+    background-color: #FCF8F5;
+    padding: 40px 0;
+}
+
+.aboutServicBox2 {
+    padding: 40px 0 0;
+}
+
+.lettryBox {
+    background-color: #FCF8F5;
+    padding: 35px 0;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.lettryBox img {
+    width: 86px;
+}
+

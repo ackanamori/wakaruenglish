@@ -47,7 +47,8 @@ def entry_post():
             user_id_tap = c.fetchone()
             user_id=user_id_tap[0]
             mkrecord_result_ck_tap = make_user_record(user_id)
-            mkrecord_result_ck=mkrecord_result_ck_tap[0]
+            print('mkrecord_result_ck_tap')
+            mkrecord_result_ck = mkrecord_result_ck_tap
             c.close()
             if mkrecord_result_ck == 1:
                 # 登録したことを知らせる
@@ -74,6 +75,7 @@ def make_user_record(user_id):
     #１user_id が一致するレコードがあればresults_idの数を数える
     c.execute("SELECT COUNT(results_id) FROM results WHERE user_id = ?", (mkrecord_user_id,))
     result_record_tap = c.fetchall()
+
     #result_record_tap はタプル型の配列 [(0,)]となるため、数字だけにしてresult_recordに入れる
     result_record = result_record_tap[0][0]
        

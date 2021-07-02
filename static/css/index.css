@@ -60,18 +60,26 @@ display: none;
     text-align: center;
 }
 
-.aboutContent img,
-.aboutServic img {
+.aboutContent img {
     width: 80%;
 }
+
 
 .aboutServicBox1 {
     background-color: #FCF8F5;
     padding: 40px 0;
 }
 
+.aboutServicBox1 img {
+    width: 70%;
+}
+
 .aboutServicBox2 {
     padding: 40px 0 0;
+}
+
+.aboutServicBox2 img {
+    width: 80%;
 }
 
 .lettryBox {

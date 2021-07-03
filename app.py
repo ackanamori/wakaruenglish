@@ -47,7 +47,7 @@ def entry_post():
             user_id_tap = c.fetchone()
             user_id=user_id_tap[0]
             mkrecord_result_ck_tap = make_user_record(user_id)
-            print('mkrecord_result_ck_tap')
+            # print('mkrecord_result_ck_tap')
             mkrecord_result_ck = mkrecord_result_ck_tap
             c.close()
             if mkrecord_result_ck == 1:
@@ -83,7 +83,7 @@ def make_user_record(user_id):
     level_no = 7
     if result_record == 0:
         for word_no in range(1, 79):
-            print(word_no)
+            # print(word_no)
             c.execute("INSERT INTO results VALUES(null, ?,?,?,?,?)",(mkrecord_user_id, level_no,word_no,"notyet.png",0))
             conn.commit()
         mkrecord_result=1
@@ -128,7 +128,7 @@ def mypage():
     if "user_id" in session:
         #セッションのユーザーidの値を、変数user_idに代入
         user_id = session['user_id']
-        print("mypage/user_id:",user_id)
+        # print("mypage/user_id:",user_id)
         #dbに接続する
         conn = sqlite3.connect('wakaen.db')
         c = conn.cursor()
@@ -201,7 +201,7 @@ def count_correct(user_id):
         user_ok_num_tap=c.fetchall()
         user_ok_num=user_ok_num_tap[0][0]
         c.close()
-        print("count_correct/user_ok_num:",user_ok_num)
+        # print("count_correct/user_ok_num:",user_ok_num)
         return(user_ok_num)
 
 
@@ -219,10 +219,10 @@ def notclear_exam_no(user_id):
             clear_exam_no.append(row[0]) 
         #すべてのWord番号をall_exam_noに入れ、残っているword番号を notclear_exam_noに入れる
         all_exam_no = list(range(1, 79))
-        print("notclear_exam_no/all_exam_no:",all_exam_no)
+        # print("notclear_exam_no/all_exam_no:",all_exam_no)
 
         notclear_exam_no = set(all_exam_no) - set(clear_exam_no) 
-        print("notclear_exam_no/notclear_exam_no:",notclear_exam_no)
+        # print("notclear_exam_no/notclear_exam_no:",notclear_exam_no)
 
         c.close() 
   
@@ -236,11 +236,11 @@ def word_no_record(exam_word_no,user_id):
         # wordlist = []
         # for row in c.fetchall(): 
         #     wordlist.append({"word_id": row[0], "voice_past": row[1], "past": row[2], "result_ok": row[3],"result_ng": row[4], "jp": row[5],  "present": row[6], "past_participle": row[7]}) 
-        print("word_no_record/exam_word_no:",exam_word_no)
+        # print("word_no_record/exam_word_no:",exam_word_no)
         wordlist=user_word_results(user_id)
         exam_word_no_index = exam_word_no -1
         exam_word = wordlist[exam_word_no_index]
-        print("word_no_record/exam_word:",exam_word)
+        # print("word_no_record/exam_word:",exam_word)
         return exam_word
 
 #テストページ
@@ -260,7 +260,7 @@ def exam():
         #ランダムで1件選ぶ
         exam_word_no_list = random.sample(notclear_exam_no_list,1)
         exam_word_no = exam_word_no_list[0]
-        print("exam/exam_word_no:",exam_word_no)
+        # print("exam/exam_word_no:",exam_word_no)
         #実施するword番号から、wordすべて取得        
         exam_word = word_no_record(exam_word_no,user_id)
         #正解数をカウント   
@@ -275,7 +275,7 @@ def result():
    
     user_id = session['user_id']
     word_no = int(request.form.get("word_id"))
-    print("ゲットしたWord_no",word_no)
+    # print("ゲットしたWord_no",word_no)
     level_no = 7
 
     conn = sqlite3.connect('wakaen.db')
@@ -304,12 +304,12 @@ def result():
     #５答えのユニットを取得
 
     exam_word = word_no_record(word_no,user_id)
-    print(exam_word)
+    # print(exam_word)
 
-    print("input_answer=",input_answer)
+    # print("input_answer=",input_answer)
     #６答えを比較
     answer_word = exam_word['past']
-    print("answer_word=",answer_word)
+    # print("answer_word=",answer_word)
 
 
     #７上記３で取得したresults_idのレコードで、間違い回数を取得
@@ -320,7 +320,7 @@ def result():
     #正解の場合
     if input_answer == answer_word:
         result_ok = "correctanswer.png"
-        print("OK",result_ok,target_result)
+        # print("OK",result_ok,target_result)
         c.execute("UPDATE results SET result_ok = ?  WHERE results_id = ? ", (result_ok,target_result))
         conn.commit()
         result_text ="正解"
@@ -334,7 +334,7 @@ def result():
     else:
         result_ng = result_ng + 1
         result_ok = "incorrectanswer.png"
-        print("NG",result_ok,result_ng,target_result)
+        # print("NG",result_ok,result_ng,target_result)
         c.execute("UPDATE results SET result_ok = ?,result_ng = ?  WHERE results_id = ?", (result_ok,result_ng,target_result))
         conn.commit()
         result_text ="不正解"
@@ -349,7 +349,7 @@ def result():
     c.close()  
     #正解数をカウント   
     user_ok_num = count_correct(user_id)
-    print(exam_word)
+    # print(exam_word)
     return render_template('result.html',html_user_ok_num=user_ok_num,html_exam_word=exam_word,html_result_text=result_text,html_input_answer=input_answer)
 
 @app.route("/reset")
@@ -385,4 +385,4 @@ def errorhandler(error):
     return render_template('404.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
